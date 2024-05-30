@@ -1,12 +1,13 @@
 package se.lexicon.g49jpaworkshop.repository;
 
 
+
+import se.lexicon.g49jpaworkshop.entity.AppUser;
+import se.lexicon.g49jpaworkshop.entity.Details;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import se.lexicon.g49jpaworkshop.entity.AppUser;
-import se.lexicon.g49jpaworkshop.entity.Details;
-
+import java.time.LocalDate;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -22,22 +23,27 @@ public class AppUserRepositoryTest {
 
     @Test
     public void testFindByUsername() {
-        Details details = new Details();
-        detailsRepository.save(details);
+        Details details = new Details ( "test@example.com" , "John Doe" , LocalDate.of ( 2000 , 1 , 1 ) );
+        detailsRepository.save ( details );
 
-        Optional<AppUser> foundUser = appUserRepository.findByUsername("john doe");
+        AppUser user = new AppUser("johndoe", "password", LocalDate.now(), details);
+        appUserRepository.save(user);
+
+        Optional<AppUser> foundUser = appUserRepository.findByUsername("johndoe");
         assertThat(foundUser).isPresent();
+        assertThat(foundUser.get().getUsername()).isEqualTo("johndoe");
     }
 
     @Test
     public void testFindByEmailIgnoreCase() {
-        Details details = new Details();
-        detailsRepository.save(details);
+        Details details = new Details("test@example.com", "John Doe", LocalDate.of(2000, 1, 1) );
+        detailsRepository.save ( details );
+
+        AppUser user = new AppUser("johndoe", "password", LocalDate.now(), details);
+        appUserRepository.save(user);
 
         Optional<AppUser> foundUser = appUserRepository.findByUserDetails_EmailIgnoreCase("TEST@example.com");
         assertThat(foundUser).isPresent();
         assertThat(foundUser.get().getUserDetails().getEmail()).isEqualTo("test@example.com");
     }
-
-
 }

@@ -15,14 +15,14 @@ import java.time.LocalDate;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-
+@Entity
 public class AppUser {
+    // Getters and Setters
+    @jakarta.persistence.Id
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
-    @Setter
-    @Getter
     @Column(unique = true)
     private String username;
     private String password;
@@ -32,7 +32,6 @@ public class AppUser {
     @JoinColumn(name = "details_id")
     private Details userDetails;
 
-    // Constructors, getters, and setters
     public AppUser(String username, String password, LocalDate regDate, Details userDetails) {
         this.username = username;
         this.password = password;
@@ -40,17 +39,4 @@ public class AppUser {
         this.userDetails = userDetails;
     }
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-
-
-
-    // Other fields, getters, and setters
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-
-    // Getters and Setters
 }

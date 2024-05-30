@@ -14,14 +14,13 @@ import java.time.LocalDate;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-
-
 @Entity
 public class Details {
+
     @jakarta.persistence.Id
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
     @Getter
     @Column(unique = true)
@@ -31,7 +30,14 @@ public class Details {
     @Getter
     private LocalDate birthDate;
 
+    @Getter
+    @OneToOne(mappedBy = "userDetails")
+    private AppUser appUser;
 
-    // Getters and Setters
+    public Details(String email, String name, LocalDate birthDate) {
+        this.email = email;
+        this.name = name;
+        this.birthDate = birthDate;
+    }
 
 }
