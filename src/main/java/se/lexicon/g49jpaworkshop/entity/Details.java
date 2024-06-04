@@ -6,7 +6,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.data.annotation.Id;
 
 import java.time.LocalDate;
 
@@ -16,7 +15,6 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @Entity
 public class Details {
-    @jakarta.persistence.Id
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -26,7 +24,7 @@ public class Details {
     private LocalDate birthDate;
 
 
-    public Details (LocalDate of) {
+    public Details (String mail , String john , String doe , LocalDate of) {
 
     }
 }

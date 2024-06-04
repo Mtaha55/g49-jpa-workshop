@@ -7,7 +7,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 class G49JpaWorkshopApplicationTests {
 
     @Test
-    void contextLoads() {
+    void contextLoads ( ) {
     }
 
 }
