@@ -12,7 +12,6 @@ import java.time.LocalDate;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-
 @Entity
 public class BookLoan {
 
@@ -29,12 +28,21 @@ public class BookLoan {
     @Column(nullable = false)  // The returned column must not be null.
     private boolean returned;
 
-    //@ManyToOne  // Many-to-one relationship with the AppUser entity.
-    //private AppUser borrower;
+    @ManyToOne  // Many-to-one relationship with the AppUser entity.
+    private AppUser borrower;
 
-    //@ManyToOne  // Many-to-one relationship with the Book entity.
-    //private Book book;
+    @ManyToOne  // Many-to-one relationship with the Book entity.
+    private Book book;
 
+
+    public static BookLoan createBookLoan (Long id ,
+                                           LocalDate loanDate ,
+                                           LocalDate dueDate ,
+                                           boolean returned ,
+                                           AppUser borrower ,
+                                           Book book) {
+        return new BookLoan ( id , loanDate , dueDate , returned , borrower , book );
+    }
 
     // Getters and setters
 

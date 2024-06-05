@@ -10,8 +10,8 @@ import java.util.Optional;
 
 @SuppressWarnings("ALL")
 @Repository
-public interface DetailsRepository extends JpaRepository<Details, Long> {
+public abstract class DetailsRepository implements JpaRepository<Details, Long> {
 
 
-    Optional<AppUser> findByUserDetails_EmailIgnoreCase(String email);
+    public abstract Optional<AppUser> findByUserDetails_Email (String email);
 }

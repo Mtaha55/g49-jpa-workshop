@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.util.Collection;
 
 
 @Setter
@@ -16,8 +17,10 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @Entity
 public class AppUser {
-    // Getters and Setters
-   @Id
+
+
+ // Getters and Setters
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
@@ -32,7 +35,12 @@ public class AppUser {
     @OneToOne
     private Details userDetails;
 
-    public AppUser (String ignoredJohndoe , String password , LocalDate now , Details ignoredDetails) {
-    }
 
+
+ @OneToMany(mappedBy = "borrower")
+ private Collection<BookLoan> bookLoa;
+
+ public AppUser (String johndoe , String password , LocalDate now , Details details) {
+ }
 }
+

@@ -25,10 +25,8 @@ public class Book {
     @Column
     private int maxLoanDay;
 
-
-
-    //@OneToMany(mappedBy = "book")
-    //private Collection<BookLoan> bookLoan;
+    @OneToMany(mappedBy = "book")
+    private Collection<BookLoan> bookLoan;
 
     public Book ( String isbn , String title , int maxLoanDay) {
         this.isbn = isbn;

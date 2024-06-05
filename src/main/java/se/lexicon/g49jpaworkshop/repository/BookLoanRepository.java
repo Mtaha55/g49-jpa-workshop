@@ -12,7 +12,7 @@ import java.util.List;
 @Repository
 public interface BookLoanRepository extends JpaRepository<BookLoan, Long> {
 
-  /*  List<BookLoan> findByBorrowerId(long borrower_Id);  // Find book loans by borrower's ID.
+    List<BookLoan> findByBorrowerId(long borrower_Id);  // Find book loans by borrower's ID.
 
     List<BookLoan> findByBookId(long book_Id);  // Find book loans by book ID.
 
@@ -20,5 +20,5 @@ public interface BookLoanRepository extends JpaRepository<BookLoan, Long> {
 
     @Modifying
     @Query("update BookLoan bl set bl.returned = true where bl.id = :loanId")  // Mark a book loan as returned by its loan ID.
-    void markAsReturned(Long loanId);*/
+    void markAsReturned(Long loanId);
 }

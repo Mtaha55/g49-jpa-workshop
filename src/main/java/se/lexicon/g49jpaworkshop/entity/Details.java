@@ -27,6 +27,8 @@ public class Details {
     public Details (String mail , String john , String doe , LocalDate of) {
 
     }
+
+
 }
 
     // Constructors, getters, and setters
