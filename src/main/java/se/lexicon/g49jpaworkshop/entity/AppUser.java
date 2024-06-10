@@ -15,7 +15,6 @@ import java.util.Collection;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
 public class AppUser {
 
 

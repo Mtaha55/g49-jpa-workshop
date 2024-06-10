@@ -7,16 +7,26 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.Collection;
+import java.util.List;
 
 @Setter
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
 public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
+
+    private Long bookId;
+
+
+    @ManyToMany
+    @JoinTable(
+            name = "book_author",
+            joinColumns = @JoinColumn(name = "book_id"),
+            inverseJoinColumns = @JoinColumn(name = "author_id"))
+    private List<Author> authors;
     private Long id;
     @Column
     private String isbn;
@@ -30,7 +40,6 @@ public class Book {
 
     public Book ( String isbn , String title , int maxLoanDay) {
         this.isbn = isbn;
-        this.title = title;
         this.maxLoanDay = maxLoanDay;
     }
 }

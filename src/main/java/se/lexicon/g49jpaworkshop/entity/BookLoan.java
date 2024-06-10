@@ -12,7 +12,6 @@ import java.time.LocalDate;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
 public class BookLoan {
 
     @Id
